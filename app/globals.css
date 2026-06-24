@@ -137,6 +137,45 @@ body {
 }
 
 /*
+  Continuous horizontal marquee — used by the "Dooyt Advantage" pills on mobile,
+  where a centred flex-wrap reads as a ragged staircase on narrow screens.
+  Two identical tracks sit side by side; each slides left by its own full width,
+  so the hand-off is seamless. Reduced-motion users get a static row.
+*/
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+/* Mirror of marquee-left — the second "Dooyt Advantage" row drifts the other
+   way so the two rows scroll in opposite directions. */
+@keyframes marquee-right {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Two-row "Dooyt Advantage" marquee — opposite directions. */
+.animate-marquee-left {
+  animation: marquee-left 28s linear infinite;
+}
+.animate-marquee-right {
+  animation: marquee-right 28s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none;
+  }
+}
+
+/*
   Skeleton sheen — a soft diagonal band that sweeps across loading placeholders,
   echoing the liquid-glass buttons so the loading state feels on-brand rather
   than a flat grey pulse. Applied via the .skeleton-sheen utility on any
