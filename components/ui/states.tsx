@@ -6,7 +6,6 @@ export function Spinner({ className }: { className?: string }) {
   return <Loader2 className={["animate-spin", className].filter(Boolean).join(" ")} aria-hidden />;
 }
 
-/** Centered loading state for an async section. */
 export function LoadingState({ label = "Loading…" }: { label?: string }) {
   return (
     <div
@@ -20,7 +19,6 @@ export function LoadingState({ label = "Loading…" }: { label?: string }) {
   );
 }
 
-/** Error state with an optional retry handler. */
 export function ErrorState({
   message = "Something went wrong.",
   onRetry,
@@ -47,7 +45,6 @@ export function ErrorState({
   );
 }
 
-/** Empty state when a list resolves with no items. */
 export function EmptyState({ message = "Nothing to show yet." }: { message?: string }) {
   return (
     <div className="flex flex-col items-center justify-center gap-3 py-16 text-center text-muted">

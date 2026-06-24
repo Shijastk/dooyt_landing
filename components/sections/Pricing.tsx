@@ -11,7 +11,6 @@ import { ErrorState } from "@/components/ui/states";
 import { PricingSkeleton } from "@/components/ui/Skeletons";
 import { DooytAdvantage } from "@/components/sections/DooytAdvantage";
 
-/** Split a price into its currency symbol and number so they can be styled separately. */
 function formatPriceParts(amount: number, currency: string) {
   try {
     const parts = new Intl.NumberFormat("en-IN", {
@@ -33,9 +32,6 @@ function formatPriceParts(amount: number, currency: string) {
 
 export function Pricing() {
   const [billing, setBilling] = useState<BillingCycle>("monthly");
-  // keepPreviousData → when toggling monthly/annual, keep the current plans on
-  // screen while the next cycle loads, so the grid slides between price sets
-  // instead of flashing the loading state (only the first load shows a spinner).
   const { data: plans, error, refetch } = useFetch(
     () => fetchPlans(billing),
     billing,
@@ -161,7 +157,6 @@ export function Pricing() {
                   );
                 }
 
-                // Popular plan: orange frame with a "MOST POPULAR PLAN" banner.
                 return (
                   <div
                     key={plan.id}

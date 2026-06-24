@@ -4,12 +4,10 @@ import { LiquidGlassButton } from "@/components/ui/LiquidGlassButton";
 
 
 export interface ModuleChipProps {
-  /** lucide icon key from seed.json (e.g. "users", "shopping-cart"). */
   iconName: string;
   label: string;
   active?: boolean;
   onSelect?: () => void;
-  /** ARIA wiring set by ModuleTabs. */
   id?: string;
   controls?: string;
   tabIndex?: number;

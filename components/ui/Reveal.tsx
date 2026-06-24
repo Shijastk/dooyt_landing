@@ -37,7 +37,6 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
 
-    // Reduced motion: skip the animation entirely.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setVisible(true);
       return;

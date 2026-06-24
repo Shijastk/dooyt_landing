@@ -2,7 +2,6 @@ import Image from "next/image";
 import { moduleIconFor } from "@/assets/icons";
 
 export interface ModuleIconProps {
-  /** lucide icon key from seed.json (e.g. "users", "shopping-cart"). */
   iconName: string;
   active?: boolean;
   className?: string;

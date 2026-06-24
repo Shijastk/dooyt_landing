@@ -1,6 +1,3 @@
-
-
-/** Base shimmering block. Compose with width/height/rounding utilities. */
 export function Skeleton({ className = "" }: { className?: string }) {
   return (
     <div
@@ -45,7 +42,6 @@ export function SkeletonGlassButton({
   );
 }
 
-/** Wrapper that announces a loading region to assistive tech. */
 function SkeletonRegion({
   label,
   children,
@@ -61,9 +57,6 @@ function SkeletonRegion({
   );
 }
 
-/* ---------------------------------------------------------------- Pricing */
-
-/** One plan card. `popular` mirrors the orange-framed "Most popular" card. */
 function PlanCardSkeleton({ popular = false }: { popular?: boolean }) {
   const body = (
     <div
@@ -100,7 +93,6 @@ function PlanCardSkeleton({ popular = false }: { popular?: boolean }) {
     return <div className="flex flex-col lg:my-6">{body}</div>;
   }
 
-  // Popular plan: orange frame + "MOST POPULAR PLAN" banner.
   return (
     <div className="flex flex-col overflow-hidden rounded-3xl bg-brand-600 shadow-xl shadow-brand-100">
       <div className="flex justify-center py-2.5">
@@ -123,8 +115,6 @@ export function PricingSkeleton() {
   );
 }
 
-/* ------------------------------------------------------------------- FAQ */
-
 export function FaqSkeleton() {
   return (
     <SkeletonRegion label="Loading FAQs…">
@@ -143,8 +133,6 @@ export function FaqSkeleton() {
     </SkeletonRegion>
   );
 }
-
-/* ----------------------------------------------------------- Testimonials */
 
 export function TestimonialsSkeleton() {
   return (
@@ -179,8 +167,6 @@ export function TestimonialsSkeleton() {
   );
 }
 
-/* --------------------------------------------------------------- Modules */
-
 export function ModulesSkeleton() {
   return (
     <SkeletonRegion label="Loading modules…">
@@ -214,9 +200,6 @@ export function ModulesSkeleton() {
   );
 }
 
-/* ------------------------------------------------------------ Industries */
-
-/** One industry card — image + name + 2 copy lines, image top or bottom. */
 function IndustryCardSkeleton({ imageTop }: { imageTop: boolean }) {
   const image = <Skeleton className="h-44 w-full rounded-xl" />;
   const text = (
@@ -244,8 +227,6 @@ function IndustryCardSkeleton({ imageTop }: { imageTop: boolean }) {
 }
 
 export function IndustriesSkeleton() {
-  // Mirror IndustriesGrid: 3 columns, the middle one without the top offset,
-  // alternating image position the same way the real cards do.
   return (
     <SkeletonRegion label="Loading industries…">
       <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">

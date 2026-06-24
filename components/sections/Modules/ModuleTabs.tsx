@@ -23,11 +23,9 @@ export function ModuleTabs({
   function focusTab(index: number) {
     const len = modules.length;
     if (len === 0) return;
-    const next = ((index % len) + len) % len; // wrap both directions
+    const next = ((index % len) + len) % len;
     const id = modules[next].id;
     onChange(id);
-    // Every tab is rendered, so the element already exists — move focus to it
-    // by id (the shared LiquidGlassButton doesn't forward a ref).
     document.getElementById(tabId(id))?.focus();
   }
 

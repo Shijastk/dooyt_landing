@@ -12,7 +12,6 @@ interface VariantStyle {
 }
 
 const VARIANTS: Record<Variant, VariantStyle> = {
-  // Liquid-glass feel — solid orange fill, multi-directional inset rim + frosted blur.
   orange: {
     text: "text-white",
     style: {
@@ -28,7 +27,6 @@ const VARIANTS: Record<Variant, VariantStyle> = {
     },
     sheen: "bg-white/15",
   },
-  // Liquid-glass feel — solid black fill, multi-directional inset rim & frosted blur.
   black: {
     text: "text-white",
     style: {
@@ -55,8 +53,6 @@ const VARIANTS: Record<Variant, VariantStyle> = {
     },
     sheen: "bg-black/[0.04]",
   },
-  // Ghost — transparent surface, dark text, no rim. The unselected module-chip
-  // look; pair with hover utilities from the caller for a tint on hover.
   ghost: {
     text: "text-ink",
     style: {
@@ -64,7 +60,6 @@ const VARIANTS: Record<Variant, VariantStyle> = {
     },
     sheen: "bg-brand-100/40",
   },
-  // The "Select plan" look.
   dark: {
     text: "text-white",
     style: {
@@ -120,10 +115,8 @@ function GlassContent({ icon, showIcon, sheen, children }: InnerProps) {
 
 interface CommonProps {
   variant?: Variant;
-  /** Any CSS colour — overrides the variant's background. Supplied by the caller. */
   color?: string;
   size?: Size;
-  /** Custom leading icon. Defaults to a phone glyph; set `showIcon={false}` to hide. */
   icon?: ReactNode;
   showIcon?: boolean;
   className?: string;
@@ -136,7 +129,6 @@ function resolve(variant: Variant, color: string | undefined, size: Size) {
   return {
     sheen: v.sheen,
     className: (cn?: string) => [base, v.text, sizes[size], cn].filter(Boolean).join(" "),
-    // Background colour override merges on top of the variant's style.
     style: (s?: CSSProperties): CSSProperties => ({
       ...v.style,
       ...(color ? { backgroundColor: color } : null),
@@ -170,9 +162,6 @@ export function LiquidGlassButton({
   );
 }
 
-// Renders a native anchor (not next/link) so hash links like `/#demo` use the
-// browser's own fragment navigation — the App Router's <Link> concatenates
-// hashes (e.g. `/#a#b`) when hopping between in-page sections.
 export function LiquidGlassButtonLink({
   variant = "black",
   color,

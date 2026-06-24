@@ -49,13 +49,7 @@ export function DemoForm({ initialPlan = "" }: { initialPlan?: string } = {}) {
   );
 }
 
-/*
-  DemoRequestForm — just the form card: plan options come from /api/plans and
-  the lead is posted to /api/demo-requests. Validation, loading + success and
-  error states are handled here.
-*/
 export function DemoRequestForm({ initialPlan = "" }: { initialPlan?: string } = {}) {
-  // Plan options come from the API, not hardcoded.
   const { data: plans } = useFetch(() => fetchPlans("monthly"));
 
   const [values, setValues] = useState<DemoRequestInput>({

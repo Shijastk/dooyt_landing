@@ -1,6 +1,5 @@
 import type { Industry } from "@/types";
 
-/** IndustryCardText — the name + description block shared by every industry card. */
 export function IndustryCardText({ industry }: { industry: Industry }) {
   return (
     <div>

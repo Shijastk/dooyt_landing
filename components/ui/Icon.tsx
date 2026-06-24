@@ -11,14 +11,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-/*
-  Optimized icon handling.
-
-  We import each lucide-react icon by name (named imports are tree-shakeable,
-  so only these components ship to the client) and map the `icon` strings used
-  in seed.json to their components. This avoids a dynamic barrel import like
-  `import * as Icons` which would defeat tree-shaking and bloat the bundle.
-*/
 const ICONS: Record<string, LucideIcon> = {
   users: Users,
   "check-square": CheckSquare,

@@ -5,7 +5,6 @@ import { BiLogoPlayStore } from "react-icons/bi";
 import type { ReactNode } from "react";
 import { logo } from "@/assets/images";
 
-/* Brand glyphs — this lucide build ships no social icons, so inline them. */
 function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
@@ -86,7 +85,6 @@ const SOCIALS = [
   { label: "LinkedIn", href: "#", Icon: LinkedinIcon },
 ];
 
-/* App-store style download badge (Apple / Google Play). */
 function StoreBadge({
   Icon,
   top,
@@ -174,8 +172,6 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Oversized brand watermark — large font (natural glyphs, medium weight),
-          ember gradient, clipped near the bottom edge. */}
       <div className="container-page pointer-events-none relative h-[18vw] max-h-[12.5rem] min-h-[5rem] overflow-hidden">
         <span
           aria-hidden

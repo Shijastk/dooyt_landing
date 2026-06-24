@@ -1,14 +1,5 @@
 import type { ReactNode } from "react";
 
-/**
- * SectionHeading — the standard heading block used at the top of every
- * landing-page section.
- *
- * Renders an orange eyebrow label, a large bold title, and an optional
- * supporting subtitle (e.g. the "Modules → Modules That Do More" pattern
- * from the design). Keep all section intros going through this component
- * so spacing, sizing, and brand color stay consistent across the page.
- */
 export function SectionHeading({
   eyebrow,
   title,
