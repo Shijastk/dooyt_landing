@@ -75,8 +75,13 @@ export default async function ContactPage({
             </Reveal>
 
             <div className="mt-12 grid items-stretch gap-8 lg:mt-16 lg:grid-cols-2 lg:gap-12">
-              {/* Contact channels — warm brand panel, echoing the CTA section */}
-              <Reveal direction="left" className="h-full">
+              {/* Contact channels — warm brand panel, echoing the CTA section.
+                  On the demo page, drop these below the form on mobile so the
+                  form leads; the lg two-column order is unaffected. */}
+              <Reveal
+                direction="left"
+                className={`h-full ${isDemo ? "order-2 lg:order-1" : ""}`}
+              >
                 <div className="relative flex h-full flex-col lg:pt-2">
                   <div>
                     <p className="text-sm font-medium text-brand-600">
@@ -147,7 +152,10 @@ export default async function ContactPage({
               </Reveal>
 
               {/* Form — demo request or general contact */}
-              <Reveal direction="right" className="h-full">
+              <Reveal
+                direction="right"
+                className={`h-full ${isDemo ? "order-1 lg:order-2" : ""}`}
+              >
                 {isDemo ? (
                   <DemoRequestForm initialPlan={initialPlan} />
                 ) : (

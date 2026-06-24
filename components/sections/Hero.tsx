@@ -32,12 +32,17 @@ export function Hero() {
           </p>
 
           {/* CTAs */}
-          <div className="animate-fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row [animation-delay:270ms]">
-            <LiquidGlassButtonLink href="/contact?type=demo" size="sm" variant="orange">
+          <div className="animate-fade-up mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:items-center [animation-delay:270ms]">
+            <LiquidGlassButtonLink
+              href="/contact?type=demo"
+              size="sm"
+              variant="orange"
+              className="w-full sm:w-auto"
+            >
               <IoMdCall className="h-6 w-5" aria-hidden />
               Request A Demo
             </LiquidGlassButtonLink>
-            <LiquidGlassButton size="sm" variant="light">
+            <LiquidGlassButton size="sm" variant="light" className="w-full sm:w-auto">
               Try Free for 30 Days
               <ArrowRight className="h-4 w-4" aria-hidden />
             </LiquidGlassButton>

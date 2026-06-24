@@ -24,12 +24,8 @@ export function ModuleShowcase({ module, id, labelledBy }: ModuleShowcaseProps) 
       id={id}
       aria-labelledby={labelledBy}
       tabIndex={0}
-      className="bg-module-panel mt-12 overflow-hidden rounded-3xl border border-line pt-4 px-4 outline-none focus-visible:ring-2 focus-visible:ring-brand-300 sm:pt-6 sm:px-6 lg:pt-10 lg:px-10"
+      className="bg-module-panel mt-12 overflow-hidden rounded-3xl border border-line pt-4 pb-6 lg:pb-0 px-4 outline-none focus-visible:ring-2 focus-visible:ring-brand-300 sm:pt-6 sm:px-6 lg:pt-10 lg:px-10"
     >
-      {/*
-        Keyed on the module id so it remounts on every tab change, replaying the
-        slide-fade. The outer panel box stays put — only the content glides in.
-      */}
       <div
         key={module.id}
         className="animate-slide-fade grid items-center gap-8 lg:grid-cols-2"
@@ -41,7 +37,7 @@ export function ModuleShowcase({ module, id, labelledBy }: ModuleShowcaseProps) 
             width={1000}
             height={750}
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="h-80 w-full object-cover object-top"
+            className="h-auto w-full object-cover object-top lg:h-80"
           />
         </div>
 

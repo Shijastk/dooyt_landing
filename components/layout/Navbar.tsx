@@ -68,7 +68,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll while the mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -77,10 +76,10 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 w-full px-8 py-4 md:px-6">
+    <header className="sticky top-0 z-50 w-full px-0 py-0 md:px-6 md:py-4">
       <nav
         className={[
-          "relative mx-auto flex max-w-7xl items-center justify-between rounded-xl bg-brand-50 px-6 py-4 transition-all duration-300 lg:px-6 lg:py-3",
+          "relative mx-auto flex max-w-7xl items-center justify-between bg-brand-50 px-6 py-4 transition-all duration-300 md:rounded-xl lg:px-6 lg:py-3",
           scrolled ? "":""
         ].join(" ")}
       >
@@ -126,7 +125,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open ? (
-        <div className="mx-auto mt-2 max-w-7xl rounded-2xl border border-brand-100 bg-brand-50 shadow-lg md:hidden animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="mx-auto max-w-7xl border-b border-brand-100 bg-brand-50 shadow-lg md:hidden animate-in fade-in slide-in-from-top-4 duration-200">
           <ul className="flex flex-col gap-1 p-4">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
