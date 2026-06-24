@@ -1,8 +1,9 @@
 import Image, { type StaticImageData } from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { ScrollRail } from "@/components/ui/ScrollRail";
+import { ExpandableContentCard } from "./ExpandableContentCard";
 import { realtime, taskManagement } from "@/assets/images";
-
 
 type FeaturedCard =
   | { kind: "image"; image: StaticImageData; alt: string }
@@ -61,15 +62,18 @@ features that help to simplify every aspect of your business on a single, easyto
         </Reveal>
       </div>
 
-      {/* Full-bleed rail so cards can scroll past the page gutter on the right. */}
-      <div className="no-scrollbar mt-14 overflow-x-auto scroll-smooth">
+      <ScrollRail className="mt-14">
         <ul className="container-page flex snap-x snap-mandatory gap-6 pb-2">
           {CARDS.map((card, i) => (
             <Reveal
               as="li"
               key={i}
               delay={i * 90}
-              className="w-[350px] shrink-0 snap-start sm:h-[320px] sm:w-[460px]"
+              className={`shrink-0 snap-start ${
+                card.kind === "image"
+                  ? "h-[244px] w-[350px] sm:h-[320px] sm:w-[460px]"
+                  : "w-[350px] sm:h-[320px] sm:w-[460px]"
+              }`}
             >
               {card.kind === "image" ? (
                 <div className="h-full w-full overflow-hidden rounded-lg border-line shadow-sm">
@@ -81,19 +85,15 @@ features that help to simplify every aspect of your business on a single, easyto
                   />
                 </div>
               ) : (
-                <div className="flex h-full w-full flex-col justify-center rounded-lg bg-brand-50 p-8 sm:p-10">
-                  <h3 className="text-2xl mt-6 font-medium leading-wider tracking-tighter   text-ink sm:text-3xl">
-                    {card.title}
-                  </h3>
-                  <p className="mt-6 text-md leading-relaxed text-muted sm:text-lg">
-                    {card.description}
-                  </p>
-                </div>
+                <ExpandableContentCard
+                  title={card.title}
+                  description={card.description}
+                />
               )}
             </Reveal>
           ))}
         </ul>
-      </div>
+      </ScrollRail>
     </section>
   );
 }
