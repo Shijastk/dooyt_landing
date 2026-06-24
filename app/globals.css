@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+/*
+  Dooyt design tokens.
+  Tailwind v4 reads the @theme block to generate utilities (bg-brand-600,
+  text-ink, rounded-xl using --radius, etc.).
+*/
+@theme {
+  /*
+    Brand — warm "orange" scale (single source of truth).
+    Tuned to the Dooyt reference and aligned with Tailwind's orange family.
+    Change these nine values and every brand surface (buttons, badges,
+    links, ratings, gradients) re-themes automatically.
+  */
+  --color-brand-50: #fff2eb; /* warm cream — badge / chip tints   */
+  --color-brand-100: #ffe0cc;
+  --color-brand-200: #ffc299;
+  --color-brand-300: #ffa366;
+  --color-brand-400: #ff8533;
+  --color-brand-500: #ff6600; /* vivid orange — accents, links     */
+  --color-brand-600: #f15a22; /* primary — filled buttons          */
+  --color-brand-700: #cc4a1a;
+  --color-brand-800: #a33a14;
+  --color-brand-900: #7a2b0f;
+
+  /* Neutrals — text + structure */
+  --color-ink: #171717; /* headings / near-black             */
+  --color-muted: #706f6b; /* body copy / secondary text        */
+  --color-line: #e7e9f2; /* hairline borders                  */
+  --color-surface: #ffffff; /* page background                   */
+  --color-surface-2: #f6f6f6; /* raised / muted background         */
+
+  /* Accent — star ratings (warm gold) */
+  --color-accent: #ffb020;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: var(--color-ink);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reusable layout + brand helpers */
+@utility container-page {
+  width: 100%;
+  max-width: 80rem; /* 1280px */
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* Brand gradient used by hero / CTA backdrops */
+@utility bg-brand-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-brand-600) 0%,
+    var(--color-brand-400) 100%
+  );
+}
+
+/* Soft warm panel behind the module preview (warm gold top → transparent) */
+@utility bg-module-panel {
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-accent) 15%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 5%, transparent) 50%,
+    transparent 100%
+  );
+}
+
+/* Warm gradient text — used by the hero badge label */
+@utility text-brand-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-brand-500) 0%,
+    var(--color-brand-700) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hide scrollbars on horizontal card rails while keeping them scrollable */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Subtle entrance animation for sections */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+
+/*
+  Slide + fade used when swapping tab panels (module showcase, pricing plans).
+  Re-runs whenever the keyed element remounts on tab change, so the new content
+  glides in instead of snapping.
+*/
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-fade {
+  animation: slide-fade-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/*
+  Skeleton sheen — a soft diagonal band that sweeps across loading placeholders,
+  echoing the liquid-glass buttons so the loading state feels on-brand rather
+  than a flat grey pulse. Applied via the .skeleton-sheen utility on any
+  position:relative, overflow:hidden block.
+*/
+@keyframes skeleton-sheen {
+  from {
+    transform: translateX(-160%) skewX(-12deg);
+  }
+  to {
+    transform: translateX(360%) skewX(-12deg);
+  }
+}
+
+@utility skeleton-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.skeleton-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-12deg);
+  animation: skeleton-sheen 1.8s ease-in-out infinite;
+}
+
+/*
+  Premium success state — the confirmation panel after a demo request.
+  The badge pops in with a soft overshoot, two halo rings ripple outward, and
+  the copy/actions reveal in a gentle upward stagger (delays set inline).
+*/
+@keyframes success-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes success-ring {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.1);
+  }
+}
+
+@keyframes success-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-success-pop {
+  animation: success-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-success-ring {
+  animation: success-ring 1.9s ease-out infinite;
+}
+.animate-success-rise {
+  animation: success-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Respect users who prefer reduced motion — drop the entrance/slide animations. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-slide-fade,
+  .animate-success-pop,
+  .animate-success-rise {
+    animation: none;
+  }
+  .animate-success-ring,
+  .skeleton-sheen::after {
+    animation: none;
+    display: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+  Lenis smooth-scroll plumbing. Lenis adds `.lenis .lenis-smooth` to <html> at
+  runtime; when active it must own scrolling, so native `scroll-behavior` is
+  disabled to avoid the two fighting. When Lenis is off (reduced motion / SSR),
+  the native smooth-scroll above still applies.
+*/
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/*
+  Scroll-reveal entrance system (paired with <Reveal/>).
+  Animates ONLY opacity + transform — both composited on the GPU, so reveals
+  stay smooth on low-end CPUs/GPUs and mobile. `will-change` is dropped the
+  moment an element finishes revealing so we don't leave idle layers around.
+
+  Wrapped in `no-preference` so reduced-motion users get fully-visible content
+  with no transforms at all.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal="up"] {
+    transform: translate3d(0, 28px, 0);
+  }
+  [data-reveal="down"] {
+    transform: translate3d(0, -28px, 0);
+  }
+  [data-reveal="left"] {
+    transform: translate3d(28px, 0, 0);
+  }
+  [data-reveal="right"] {
+    transform: translate3d(-28px, 0, 0);
+  }
+  [data-reveal="zoom"] {
+    transform: scale(0.96);
+  }
+  [data-reveal="fade"] {
+    transform: none;
+  }
+  [data-reveal][data-visible="true"] {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}
