@@ -9,6 +9,8 @@ its dynamic sections.
 
 ## Getting started
 
+> **Prerequisites:** Node.js 20+ (required by Next.js 16 / React 19) and npm.
+
 ```bash
 npm install
 npm run dev
@@ -22,6 +24,19 @@ npm run start   # serve the production build
 npm run lint    # eslint
 ```
 
+## Features
+
+Mapped to the brief's Part 1 requirements:
+
+- **Responsive, mobile-first** layout across the page, with a working mobile nav drawer in the navbar.
+- **Data-driven sections** — Modules, Industries, Plans, Testimonials and FAQs are fetched from the API, never hardcoded.
+- **Pricing toggle** — a monthly / annual segmented control that refetches and recomputes prices server-side, with the annual 15% discount surfaced in the UI.
+- **FAQ accordion** — single-open accordion with accessible `aria-expanded` toggles.
+- **Request-a-Demo form** — client-side validation (required full name, valid email), a loading state on submit, an animated success state, and inline error handling. Lives on the dedicated `/contact` route, with a demo variant via `?type=demo` and a general-contact variant.
+- **Graceful states** — every data-driven section renders skeleton-loading, empty, and error (with retry) states.
+
+> Note: testimonials are presented as a responsive, paginated card grid rather than a slider.
+
 ## Architecture
 
 Built on the official Next.js **"store project files outside of `app`"** strategy
@@ -32,13 +47,14 @@ shared code lives in root-level folders resolved via the `@/*` alias.
 ```
 app/
   api/                 Route Handlers (REST API, base path /api)
+  contact/             Request-a-Demo and general contact page
   layout.tsx           Root layout + SEO metadata
   page.tsx             Landing page — composes the sections
   globals.css          Tailwind v4 + design tokens
 components/
   layout/              Navbar (with mobile nav), Footer
   sections/            Hero, Modules, Features, Industries, CTA,
-                       Pricing, Testimonials, FAQ, DemoForm
+                       Pricing, Testimonials, FAQ, DemoForm, ContactForm
   ui/                  Button, Badge, Icon, SectionHeading, states, …
 lib/
   db.ts                fs-backed mock database + typed accessors
