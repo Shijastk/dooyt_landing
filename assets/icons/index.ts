@@ -17,14 +17,6 @@ import groupGradient from "./groupgraeient.png";
 import homeGradient from "./homegradient.png";
 import growthGradient from "./growthgradient.png";
 
-/*
-  Barrel for the PNG module icons in this folder.
-
-  Each icon ships in two variants: the default (dark/orange) glyph and an
-  `active` (white) glyph used on the solid orange chip. Static imports keep the
-  files in Next.js' image pipeline (optimization + intrinsic sizing) and make
-  them importable from anywhere via `@/assets/icons`.
-*/
 
 /** A module icon and its white "active" variant (shown on the orange chip). */
 export interface ModuleIconAsset {

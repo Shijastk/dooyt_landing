@@ -3,13 +3,6 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { realtime, taskManagement } from "@/assets/images";
 
-/*
-  FeaturedCards — a horizontal-scroll rail that alternates image cards and
-  content cards. Two image cards (the real-time dashboard + task history shots)
-  and two content cards describe the matching capability. The rail scrolls
-  horizontally with scroll-snap so each card lands cleanly into view on touch
-  and trackpad.
-*/
 
 type FeaturedCard =
   | { kind: "image"; image: StaticImageData; alt: string }

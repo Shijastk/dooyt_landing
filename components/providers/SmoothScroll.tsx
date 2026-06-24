@@ -3,21 +3,6 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-/**
- * SmoothScroll — app-wide buttery scrolling powered by Lenis.
- *
- * Performance contract (works on low-end CPU/GPU + mobile):
- *  - One single rAF loop (no scroll-event thrashing); Lenis only mutates
- *    `transform` on the scroll container, which the compositor handles cheaply.
- *  - Touch devices keep NATIVE scrolling (`syncTouch: false`) — this is the
- *    smoothest, lowest-power option on phones and avoids janky momentum.
- *  - Honors `prefers-reduced-motion`: we never start Lenis, falling back to the
- *    browser's own (instant/native-smooth) scrolling.
- *  - Pauses the rAF loop when the tab is hidden to save battery.
- *
- * It also upgrades in-page anchor links (`#features`, `#pricing`, …) so they
- * glide to their target with an offset that clears the sticky navbar.
- */
 export function SmoothScroll() {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(

@@ -4,14 +4,7 @@ import type { KeyboardEvent } from "react";
 import type { Module } from "@/types";
 import { ModuleChip } from "./ModuleChip";
 
-/**
- * ModuleTabs — the wrapping row of <ModuleChip>s rendered as an ARIA tablist.
- *
- * Owns keyboard interaction (arrow keys + Home/End with wraparound) and the
- * roving tabindex; selection state itself lives in the parent so the showcase
- * panel can react to it. `tabId` / `panelId` keep the tab↔panel a11y wiring in
- * sync with <ModuleShowcase>.
- */
+
 export interface ModuleTabsProps {
   modules: Module[];
   activeId: string;

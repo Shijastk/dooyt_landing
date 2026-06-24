@@ -2,15 +2,7 @@ import type { KeyboardEventHandler } from "react";
 import { ModuleIcon } from "./ModuleIcon";
 import { LiquidGlassButton } from "@/components/ui/LiquidGlassButton";
 
-/**
- * ModuleChip — a single selectable module pill (icon + label), built on the
- * shared <LiquidGlassButton>: the active chip uses the solid `orange` glass
- * surface, inactive chips use the transparent `ghost` variant with a hover
- * tint. Reuse this for every chip in the module switcher; don't restyle chips
- * inline. The tab a11y props (`id`, `controls`, `tabIndex`, `onKeyDown`) are
- * supplied by ModuleTabs when used as a tablist; focus is moved by `id`, so no
- * ref is needed.
- */
+
 export interface ModuleChipProps {
   /** lucide icon key from seed.json (e.g. "users", "shopping-cart"). */
   iconName: string;

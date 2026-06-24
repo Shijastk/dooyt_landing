@@ -16,12 +16,6 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact Us" },
 ];
 
-/**
- * NavLink — routes (`/contact`) go through next/link for SPA navigation, while
- * in-page hash links (`/#features`) render a plain anchor so the browser's
- * native fragment navigation runs. The App Router's <Link> concatenates
- * hashes (e.g. `/#a#b`) when hopping between sections, so we avoid it there.
- */
 function NavLink({
   href,
   className,

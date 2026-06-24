@@ -9,10 +9,7 @@ import type {
   Testimonial,
 } from "@/types";
 
-/**
- * Typed client-side fetchers for the landing page sections.
- * All hit same-origin `/api/*` Route Handlers.
- */
+
 
 async function getJson<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, init);

@@ -6,15 +6,6 @@ import { createDemoRequest } from "@/lib/api-client";
 import { LiquidGlassButton } from "@/components/ui/LiquidGlassButton";
 import { Spinner } from "@/components/ui/states";
 
-/*
-  ContactForm — the form half of the /contact page.
-
-  Mirrors the DemoForm card/field language (same rounded-3xl surface, same
-  <Field/> inputs, brand focus rings) so the two stay visually identical.
-  There is no dedicated /api/contact endpoint, so submissions reuse the public
-  `/api/demo-requests` lead pipeline; the chosen subject is folded into the
-  message body so nothing is lost on the backend.
-*/
 
 interface Values {
   fullName: string;

@@ -10,17 +10,6 @@ import { Pricing } from "@/components/sections/Pricing";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 
-/*
-  Page composition.
-
-  Scroll-reveal strategy:
-    - Hero animates on load (above the fold) via CSS — see Hero.tsx.
-    - FeaturedCards, Industries, Testimonials and FAQ stagger their own children
-      (cards / rows reveal one after another), so they're left un-wrapped here.
-    - The remaining sections reveal as a single block via <Reveal>.
-  All reveals run on the GPU compositor (opacity + transform only) and respect
-  prefers-reduced-motion, keeping things smooth on low-power devices.
-*/
 export default function Home() {
   return (
     <div id="top">

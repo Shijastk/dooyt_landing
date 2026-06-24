@@ -11,15 +11,7 @@ import type {
   Testimonial,
 } from "@/types";
 
-/**
- * File-system backed mock database.
- *
- * On first import we read `data/seed.json` with native `fs` and hydrate an
- * in-memory store. All mutations (create/update/delete, demo-request creates)
- * happen against this store so they persist for the lifetime of the dev server
- * without ever writing back to the seed file. This keeps the repo's seed data
- * pristine while still demonstrating full CRUD behaviour.
- */
+
 
 function loadSeed(): SeedData {
   const seedPath = path.join(process.cwd(), "data", "seed.json");

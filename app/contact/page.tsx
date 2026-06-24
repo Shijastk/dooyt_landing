@@ -8,15 +8,7 @@ import { StarRating } from "@/components/ui/StarRating";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { DemoRequestForm } from "@/components/sections/DemoForm";
 
-/*
-  /contact serves two intents from a single route:
-    - default      → general contact form (ContactForm)
-    - ?type=demo   → "Request a Demo" form (DemoRequestForm), whose plan options
-                     come from /api/plans and which posts to /api/demo-requests.
-  Both the navbar "Contact Us" link and every "Request a Demo" / "Schedule a
-  demo" / "Select plan" CTA land here; the `type` query param swaps the content.
-  An optional `?plan=<id>` preselects a plan in the demo form.
-*/
+
 
 // searchParams is a promise in Next 16 — awaited in both the page and metadata.
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;

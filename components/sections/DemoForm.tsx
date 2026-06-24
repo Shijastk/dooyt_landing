@@ -18,11 +18,6 @@ const BENEFITS = [
   "Migration & onboarding guidance",
 ];
 
-/*
-  DemoForm — the full marketing section (pitch column + form card). Kept as a
-  self-contained section. The form card itself lives in <DemoRequestForm/> so it
-  can be reused on the /contact page in "Request a Demo" mode.
-*/
 export function DemoForm({ initialPlan = "" }: { initialPlan?: string } = {}) {
   return (
     <section id="demo" className="scroll-mt-20 bg-white py-20 sm:py-24">

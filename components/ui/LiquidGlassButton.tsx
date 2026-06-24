@@ -5,15 +5,12 @@ type Variant = "orange" | "black" | "light" | "dark" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 interface VariantStyle {
-  /** Tailwind text-colour class applied to the label + icon. */
+
   text: string;
-  /** Inline style: background + border/shadow. */
   style: CSSProperties;
-  /** Tint of the sheen band that sweeps across on hover. */
   sheen: string;
 }
 
-// Each variant fully describes its own surface so callers just pick a name.
 const VARIANTS: Record<Variant, VariantStyle> = {
   // Liquid-glass feel — solid orange fill, multi-directional inset rim + frosted blur.
   orange: {
@@ -49,8 +46,6 @@ const VARIANTS: Record<Variant, VariantStyle> = {
     },
     sheen: "bg-white/15",
   },
-  // NEW — white fill, hairline gray border + soft shadow (no spread), dark text.
-  // The "Try Free for 30 Days" look.
   light: {
     text: "text-neutral-900",
     style: {
@@ -69,7 +64,6 @@ const VARIANTS: Record<Variant, VariantStyle> = {
     },
     sheen: "bg-brand-100/40",
   },
-  // NEW — pure black fill, white text, soft drop shadow (no spread).
   // The "Select plan" look.
   dark: {
     text: "text-white",
